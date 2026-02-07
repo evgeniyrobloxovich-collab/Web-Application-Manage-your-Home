@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест API</title>
+</head>
+<body>
+    <h1>Тестирование API</h1>
+    <div id="result"></div>
+    
+    <script>
+    async function testAPI() {
+        const resultDiv = document.getElementById('result');
+        
+        try {
+            // Тест 1: Простой GET запрос
+            resultDiv.innerHTML = '<p>Тест 1: Проверка GET запроса к test_api.php...</p>';
+            
+            // Используем правильный путь
+            const getResponse = await fetch('/project/api/test_api.php', {
+                method: 'GET'
+            });
+            
+            if (!getResponse.ok) {
+                throw new Error(`HTTP ${getResponse.status}: ${getResponse.statusText}`);
+            }
+            
+            const getData = await getResponse.json();
+            resultDiv.innerHTML += `<p>GET ответ: ${JSON.stringify(getData)}</p>`;
+            
+            // Тест 2: POST запрос
+            resultDiv.innerHTML += '<p>Тест 2: Проверка POST запроса...</p>';
+            const postResponse = await fetch('/project/api/test_api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    action: 'test',
+                    test: true
+                })
+            });
+            
+            const postData = await postResponse.json();
+            resultDiv.innerHTML += `<p>POST ответ: ${JSON.stringify(postData)}</p>`;
+            
+            // Тест 3: Основной API
+            resultDiv.innerHTML += '<p>Тест 3: Проверка основного API...</p>';
+            const mainResponse = await fetch('/project/api/requests.php', {
+                method: 'GET'
+            });
+            
+            if (!mainResponse.ok) {
+                const errorText = await mainResponse.text();
+                resultDiv.innerHTML += `<p>Ошибка основного API: ${errorText.substring(0, 200)}</p>`;
+            } else {
+                const mainData = await mainResponse.json();
+                resultDiv.innerHTML += `<p>Основной API: ${JSON.stringify(mainData)}</p>`;
+            }
+            
+        } catch (error) {
+            resultDiv.innerHTML += `<p style="color: red;">Ошибка: ${error.message}</p>`;
+            console.error('Ошибка тестирования:', error);
+        }
+    }
+    
+    // Запускаем тест при загрузке
+    testAPI();
+    </script>
+</body>
+</html>

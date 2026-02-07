@@ -1,0 +1,16 @@
+# Включаем перенаправление
+RewriteEngine On
+
+# Устанавливаем заголовки для API
+<FilesMatch "\.(php)$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</FilesMatch>
+
+# Включаем вывод ошибок для отладки
+php_flag display_errors on
+php_value error_reporting 32767
+
+# Запрещаем листинг директорий
+Options -Indexes

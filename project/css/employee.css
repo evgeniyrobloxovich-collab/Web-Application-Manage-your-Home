@@ -1,0 +1,1465 @@
+/* ============================================
+   СТИЛИ ДЛЯ СОТРУДНИКА УК (УНИКАЛЬНЫЕ КЛАССЫ)
+   Файл: employee.css
+============================================ */
+
+/* СБРОС И БАЗОВЫЕ СТИЛИ */
+* {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+body {
+    background-color: #f8f9fa;
+    color: #000000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== ШАПКА ===== */
+.uk-header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.uk-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.uk-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.uk-page-title h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.uk-user-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Уведомления */
+.uk-notif-wrapper {
+    position: relative;
+}
+
+.uk-notif-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.uk-notif-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.uk-notif-btn i {
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.uk-notif-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+/* Выпадающее меню уведомлений */
+.uk-notif-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 320px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+    display: none;
+    z-index: 1001;
+}
+
+.uk-notif-dropdown.show {
+    display: block;
+}
+
+.uk-notif-header {
+    padding: 1.2rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.uk-notif-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uk-notif-total {
+    background-color: #f0f0f0;
+    color: #666;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.uk-notif-list {
+    padding: 1.2rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.uk-notif-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.uk-notif-item.new {
+    background-color: #f0f7ff;
+}
+
+.uk-notif-item i {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: 0.2rem;
+}
+
+.uk-notif-text {
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.uk-notif-time {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.uk-notif-footer {
+    padding: 1rem;
+    border-top: 1px solid #f0f0f0;
+    text-align: center;
+}
+
+.uk-notif-footer a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Профиль пользователя */
+.uk-profile-wrapper {
+    position: relative;
+}
+
+.uk-profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.5rem 0.8rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    border: 1px solid #e0e0e0;
+}
+
+.uk-profile-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.uk-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #e3f2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uk-avatar i {
+    font-size: 1.2rem;
+    color: #1976d2;
+}
+
+.uk-user-name {
+    font-weight: 500;
+    color: #333;
+}
+
+.uk-profile-btn .fa-chevron-down {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Выпадающее меню профиля */
+.uk-profile-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    margin-top: 10px;
+    display: none;
+    z-index: 1001;
+}
+
+.uk-profile-dropdown.show {
+    display: block;
+}
+
+.uk-profile-info {
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.uk-dropdown-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e3f2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uk-dropdown-avatar i {
+    font-size: 2rem;
+    color: #1976d2;
+}
+
+.uk-dropdown-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.uk-dropdown-info p {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+}
+
+.uk-user-role {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.uk-dropdown-divider {
+    height: 1px;
+    background-color: #f0f0f0;
+    margin: 0.5rem 0;
+}
+
+.uk-dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.uk-dropdown-link:hover {
+    background-color: #f5f5f5;
+}
+
+.uk-dropdown-link i {
+    width: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.uk-dropdown-link.logout {
+    color: #e74c3c;
+}
+
+.uk-dropdown-link.logout i {
+    color: #e74c3c;
+}
+
+/* Главное меню навигации */
+.uk-main-menu {
+    display: flex;
+    border-top: 1px solid #f0f0f0;
+    padding: 0.8rem 0;
+    gap: 0;
+    overflow-x: auto;
+}
+
+.uk-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.8rem 1.2rem;
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.uk-menu-link:hover,
+.uk-menu-link.active {
+    color: #000;
+    border-bottom-color: #000;
+}
+
+.uk-menu-link i {
+    font-size: 1rem;
+}
+
+/* Основной контент */
+.uk-main-content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.uk-dashboard-container,
+.uk-page-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* ===== ОСТАЛЬНЫЕ СТИЛИ СТРАНИЦ ===== */
+
+/* Статистика */
+.uk-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 2.5rem;
+}
+
+.uk-stat-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.uk-stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+}
+
+.uk-stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.uk-stat-icon.houses {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.uk-stat-icon.users {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.uk-stat-icon.requests {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.uk-stat-icon.employees {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+}
+
+.uk-stat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.uk-stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.uk-stat-change {
+    font-size: 0.85rem;
+    color: #4caf50;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Быстрые действия */
+.uk-quick-actions {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.uk-quick-actions h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uk-actions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.uk-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.uk-action-btn:hover {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+/* Карточки домов */
+.uk-houses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.uk-house-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.uk-house-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.uk-house-address {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.uk-house-year {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.uk-house-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.uk-house-stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Пользователи */
+.uk-users-list,
+.uk-requests-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.uk-user-item,
+.uk-request-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.uk-user-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+
+.uk-user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #666;
+}
+
+.uk-user-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #000;
+}
+
+.uk-user-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+/* Заявки */
+.uk-request-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.uk-request-id {
+    font-weight: 600;
+    color: #000;
+}
+
+.uk-request-category {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.uk-request-category.plumbing {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.uk-request-category.electricity {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.uk-request-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.uk-request-status.new {
+    background-color: #ffebee;
+    color: #d32f2f;
+}
+
+.uk-request-status.in-progress {
+    background-color: #fff3e0;
+    color: #f57c00;
+}
+
+.uk-request-status.completed {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.uk-request-description {
+    color: #333;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.uk-request-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Кнопки */
+.uk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-decoration: none;
+    min-width: 120px;
+}
+
+.uk-btn-primary {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.uk-btn-primary:hover {
+    background-color: #333;
+    border-color: #333;
+}
+
+.uk-btn-secondary {
+    background-color: #f5f5f5;
+    color: #333;
+    border-color: #ddd;
+}
+
+.uk-btn-secondary:hover {
+    background-color: #e0e0e0;
+    border-color: #ccc;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .uk-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .uk-user-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .uk-main-menu {
+        overflow-x: auto;
+    }
+    
+    .uk-menu-link span {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .uk-user-name {
+        display: none;
+    }
+    
+    .uk-profile-btn .fa-chevron-down {
+        display: none;
+    }
+    
+    .uk-menu-link span {
+        display: none;
+    }
+    
+    .uk-menu-link i {
+        font-size: 1.2rem;
+    }
+}
+/* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ СТРАНИЦ ===== */
+
+/* Заголовок страницы */
+.uk-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.uk-page-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uk-page-subtitle {
+    color: #666;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Панель фильтрации */
+.uk-filter-panel {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.uk-search-box {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.uk-search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.uk-search-box input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.3s ease;
+}
+
+.uk-search-box input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.uk-filter-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.uk-filter-select {
+    padding: 12px 40px 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    min-width: 150px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23000' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+}
+
+.uk-filter-select:focus {
+    outline: none;
+    border-color: #000;
+}
+
+/* Двухколоночный layout */
+.uk-dashboard-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .uk-dashboard-columns {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Блок последних домов */
+.uk-recent-houses {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+}
+
+.uk-recent-houses h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uk-house-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.uk-house-item {
+    padding: 1rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.uk-house-item:hover {
+    border-color: #000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.uk-house-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.uk-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+}
+
+.uk-detail-item i {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Контейнеры списков */
+.uk-list-container {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    margin-bottom: 2rem;
+}
+
+/* Модальные окна */
+.uk-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.uk-modal-content {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.uk-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.uk-modal-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+.uk-close-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    line-height: 1;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.uk-close-modal:hover {
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.uk-modal-body {
+    padding: 1.5rem;
+}
+
+.uk-modal-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.uk-modal-form {
+    margin-top: 1rem;
+}
+
+.uk-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.uk-form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.uk-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.uk-input-wrapper i {
+    position: absolute;
+    left: 15px;
+    color: #777;
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.uk-input-wrapper input,
+.uk-input-wrapper select {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.uk-input-wrapper input:focus,
+.uk-input-wrapper select:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.uk-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+/* Активный пункт меню */
+.uk-menu-link.active {
+    color: #000 !important;
+    border-bottom-color: #000 !important;
+    font-weight: 600 !important;
+}
+
+/* Стили для выпадающих меню */
+.uk-notif-dropdown.show,
+.uk-profile-dropdown.show {
+    display: block !important;
+}
+
+/* Стили для модального окна профиля */
+.uk-form-section {
+    margin-bottom: 2rem;
+}
+
+.uk-form-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.uk-section-description {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.uk-form-hint {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.5rem;
+}
+/* Исправления для поиска и фильтрации */
+.uk-filter-panel {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .uk-filter-panel {
+        grid-template-columns: 1fr;
+    }
+}
+
+.uk-search-box {
+    position: relative;
+    width: 100%;
+    min-width: 250px;
+}
+
+.uk-search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    z-index: 1;
+}
+
+.uk-search-box input {
+    width: 100%;
+    padding: 10px 12px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.uk-search-box input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.uk-filter-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.uk-filter-select {
+    padding: 10px 30px 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    min-width: 150px;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+.uk-filter-select:focus {
+    outline: none;
+    border-color: #000;
+}
+
+/* Исправление z-index для выпадающих меню */
+.uk-notif-dropdown,
+.uk-profile-dropdown {
+    z-index: 1002;
+}
+
+.uk-modal {
+    z-index: 1003;
+}
+/* Стили для поиска */
+.uk-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 300px;
+}
+
+.uk-search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    z-index: 1;
+}
+
+.uk-search-box input {
+    width: 100%;
+    padding: 10px 40px 10px 35px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.uk-search-box input:focus {
+    outline: none;
+    border-color: #000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.uk-search-tips {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 10px 0;
+    max-width: 500px;
+    line-height: 1.4;
+}
+
+.uk-search-clear:hover {
+    color: #333;
+}
+
+/* Адаптивность для панели поиска */
+@media (max-width: 768px) {
+    .uk-filter-panel {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .uk-search-box {
+        min-width: 100%;
+    }
+    
+    .uk-filter-controls {
+        width: 100%;
+    }
+    
+    .uk-filter-select {
+        width: 100%;
+    }
+}
+/* Стили для сообщений */
+.uk-alert {
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.uk-alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.uk-alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.uk-alert i {
+    font-size: 1.2rem;
+}
+
+/* Стили для кнопок действий пользователя */
+.uk-user-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+}
+
+.delete-user-form {
+    margin: 0;
+}
+
+.delete-user-btn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.delete-user-btn:hover {
+    background-color: #c82333;
+}
+
+.delete-user-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Подсказка при наведении на удаление */
+.uk-user-item:hover .delete-user-btn {
+    background-color: #c82333;
+}
+
+/* Стили для поиска */
+.uk-search-clear:hover {
+    color: #333;
+}
+/* Стили для кнопок управления домом */
+.uk-house-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+    gap: 15px;
+}
+
+.delete-house-btn {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.delete-house-btn:hover {
+    background-color: #c82333;
+}
+
+.edit-house-btn {
+    padding: 8px 16px;
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+}
+
+.edit-house-btn:hover {
+    background-color: #138496;
+}
+
+/* Форма поиска */
+.uk-search-form {
+    display: flex;
+    width: 50%;
+    gap: 10px;
+}
+
+/* Адаптивность для карточек домов */
+@media (max-width: 768px) {
+    .uk-houses-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .uk-house-actions {
+        flex-direction: column;
+    }
+    
+    .uk-house-stats {
+        grid-template-columns: 1fr;
+    }
+}
+/* Исправления для панели фильтрации */
+.uk-filter-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.uk-search-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 15px;
+}
+
+.uk-search-form .uk-search-box {
+    flex: 1;
+    margin: 0;
+    min-width: 200px;
+}
+
+.uk-search-form .uk-search-box input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.uk-search-form .uk-filter-controls {
+    display: flex;
+    gap: 15px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.uk-search-form .uk-btn {
+    padding: 10px 20px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+}
+
+/* Статистика поиска */
+.search-stats {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+}
+
+/* Адаптивность для панели поиска */
+@media (max-width: 768px) {
+    .uk-search-form {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+    }
+    
+    .uk-search-form .uk-search-box {
+        min-width: 100%;
+    }
+    
+    .uk-search-form .uk-filter-controls {
+        width: 100%;
+    }
+    
+    .uk-search-form .uk-btn {
+        flex: 1;
+        width: 100%;
+    }
+}

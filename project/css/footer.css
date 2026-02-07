@@ -1,0 +1,51 @@
+/* footer.css - только стили подвала */
+
+.footer {
+    background-color: #000;
+    color: #fff;
+    padding: 2.5rem 0;
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.footer-logo i {
+    font-size: 1.5rem;
+}
+
+.copyright {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность подвала */
+@media (max-width: 768px) {
+    .footer {
+        padding: 2rem 0;
+    }
+    
+    .footer-logo {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+    }
+}

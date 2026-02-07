@@ -1,0 +1,97 @@
+-- Создание базы данных
+CREATE DATABASE IF NOT EXISTS house_management DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+USE house_management;
+
+-- Таблица пользователей
+CREATE TABLE IF NOT EXISTS users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('житель', 'сотрудник_ук') NOT NULL DEFAULT 'житель',
+    address VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+-- Таблица домов
+CREATE TABLE IF NOT EXISTS houses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    address VARCHAR(255) NOT NULL,
+    entrances INT NOT NULL,
+    apartments INT NOT NULL,
+    floors INT NOT NULL,
+    year_built YEAR NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Таблица заявок
+CREATE TABLE IF NOT EXISTS requests (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    apartment_number VARCHAR(10),
+    category ENUM('водопровод', 'отопление', 'электроснабжение', 'другое') NOT NULL,
+    description TEXT NOT NULL,
+    status ENUM('новая', 'в работе', 'выполнена', 'отклонена') DEFAULT 'новая',
+    assigned_to INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (assigned_to) REFERENCES users(id)
+);
+
+-- Добавление тестовых данных
+INSERT INTO users (full_name, email, phone, password, role, address) VALUES
+('Жека Алигатор', 'zhitel@demo.ru', '+79512488211', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'житель', 'ул. Первомайская, д.23, кв. 23'),
+('Алигатор Жека', 'admin@uk.ru', '+79512488211', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'сотрудник_ук', 'Офис УК'),
+('Иванов Иван Иванович', 'ivanov@example.com', '+79001111111', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'житель', 'ул. Ленина, д. 10, кв. 45'),
+('Петрова Анна Сергеевна', 'petrova@example.com', '+79002222222', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'житель', 'ул. Пушкина, д. 25, кв. 12'),
+('Козлов Дмитрий Викторович', 'kozlov@example.com', '+79003333333', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'сотрудник_ук', 'Офис технического отдела');
+
+INSERT INTO houses (address, entrances, apartments, floors, year_built) VALUES
+('ул. Ленина, д. 10', 4, 144, 9, 1985),
+('ул. Пушкина, д. 25', 3, 60, 5, 1990);
+
+INSERT INTO requests (user_id, apartment_number, category, description, status) VALUES
+(1, '23', 'водопровод', 'Протечка крана на кухне', 'новая'),
+(1, '23', 'электроснабжение', 'Не работает свет в подъезде на 5 этаже', 'в работе'),
+(3, '45', 'водопровод', 'Замена смесителя в ванной комнате', 'выполнена');
+
+-- Таблица уведомлений
+CREATE TABLE IF NOT EXISTS notifications (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    type ENUM('info', 'warning', 'success', 'error') DEFAULT 'info',
+    is_read BOOLEAN DEFAULT FALSE,
+    related_type ENUM('request', 'system', 'message', 'alert') DEFAULT 'system',
+    related_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Создадим индекс для быстрого поиска непрочитанных уведомлений
+CREATE INDEX idx_notifications_user_read ON notifications(user_id, is_read);
+
+-- Добавим тестовые уведомления
+INSERT INTO notifications (user_id, title, message, type, related_type, related_id) VALUES
+(1, 'Заявка создана', 'Ваша заявка #1 успешно создана', 'success', 'request', 1),
+(1, 'Заявка в работе', 'Заявка #2 переведена в статус "В работе"', 'info', 'request', 2),
+(2, 'Новая заявка', 'Поступила новая заявка от Иванова И.И.', 'info', 'request', 1),
+(2, 'Новый пользователь', 'Зарегистрирован новый пользователь Петрова А.С.', 'info', 'system', 3),
+(2, 'Заявка завершена', 'Заявка #3 успешно выполнена', 'success', 'request', 3);
+
+-- Обновляем таблицу requests для поддержки всех статусов
+ALTER TABLE requests 
+MODIFY COLUMN status ENUM('новая', 'в работе', 'выполнена', 'отклонена') 
+DEFAULT 'новая';
+
+-- Добавляем индексы для быстрого поиска
+CREATE INDEX idx_requests_user_id ON requests(user_id);
+CREATE INDEX idx_requests_status ON requests(status);
+CREATE INDEX idx_requests_created_at ON requests(created_at DESC);
