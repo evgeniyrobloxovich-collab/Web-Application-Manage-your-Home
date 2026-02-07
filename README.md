@@ -1,4 +1,13 @@
 # Web-Application-Manage-your-Home.
+Description: This web application is a functional portal for management companies and apartment customers (residents). Design: minimalistic, strict, light scheme: white and black, layout: modern, block-based. Features: display of apartment maintenance requests (in the Resident and Management Company Employee profiles), notification block, viewing and editing user information, registration and login system, display of registered users and apartments (in the Management Company Employee profile). 
+User roles: 
+1. Resident (apartment customer).
+2. Management Company employee (acts as an administrator).
+The structure of the web application pages:
+1. Landing (welcome page) – contains the advantages of the application, its purpose.
+2. Registration form – a form with fields for entering user information.
+3. Login form – a form with fields for entering data of a registered user.
+4. Control panel (main) – displays blocks of incoming requests, quick actions (transitions, only for the Employee)
 House management. (Desktop web-based real estate management software)
 1. ICP (Ideal Customer Profile).
 Segment name: "Digital Manager"
